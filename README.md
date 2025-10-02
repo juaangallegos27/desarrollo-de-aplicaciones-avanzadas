@@ -1,28 +1,18 @@
-# Proyecto: Desarrollo de Aplicaciones Avanzadas
+# Proyecto Web Minimalista - Ragasa
 
-## Integrantes y roles
-- **Administrador del repositorio y Front:** Juan C. Gallegos  
-  Organiza el trabajo, define el orden semanal, diseña/maqueta el front y aprueba integraciones.
-- **Desarrollador (Back):** Ricardo Muraira  
-  Implementa la lógica/funcionalidad del back, sube avances frecuentes y documenta cambios.
+Este proyecto es una página web **sencilla y minimalista** hecha únicamente con **HTML y CSS**.
 
-## Estructura
-- `front/` HTML inicial
-- `back/` punto de entrada del back
-- `docs/` evidencias y capturas para entregas
+## 📂 Estructura
 
-## Cómo trabajamos (resumen)
-- Ramas: `main` (estable) y ramas por tarea `feat/lo-que-sea`.
-- Commits cortos con mensaje claro: `feat:`, `fix:`, `docs:`, `chore:`.
-- Integración: todo entra por Pull Request y lo aprueba el admin.
+- `index.html`: Página principal.
+- `style.css`: Estilos básicos y minimalistas.
+- `assets/img`: Carpeta con las imágenes de referencia.
+- `docs/PROYECTO1.docx`: Documento de referencia.
+- `.gitignore`: Archivos a ignorar en Git.
+- `README.md`: Documentación del proyecto.
 
-## Cómo correr (cuando haya código)
-- Front: abrir `front/index.html` en el navegador.
-- Back (más adelante): `node back/index.js`.
+## 🚀 Cómo usar
 
-## Documentación
-- Entregas y capturas: `docs/entregas.md`
-- Bitácora (qué se hizo cada día/semana): `docs/bitacora.md`
-- Roles y procesos del equipo: `docs/roles.md`
-- Justificación del `.gitignore`: `docs/gitignore.md`
-- Cambios por versión: `CHANGELOG.md`
+1. Clonar el repositorio o descargar los archivos.
+2. Colocar todas las imágenes dentro de `assets/img/`.
+3. Abrir `index.html` en cualquier navegador.

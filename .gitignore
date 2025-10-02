@@ -1,15 +1,10 @@
-# macOS
+# Ignorar archivos temporales y del sistema
 .DS_Store
+Thumbs.db
 
-# Node / paquetes
-node_modules/
-npm-debug.log*
-yarn-error.log*
+# Archivos de backup
+*.bak
+*.tmp
 
-# Builds
-dist/
-build/
-
-# Entornos
-.env
-.env.*
+# Documentos que no van al deploy
+/docs/

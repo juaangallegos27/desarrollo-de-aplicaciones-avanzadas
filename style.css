@@ -1,0 +1,379 @@
+/* --------- Base --------- */
+:root{
+  --bg: #ffffff;
+  --ink: #1b1b1b;
+  --muted: #6b7280;
+  --brand: #0b7a53;
+  --brand-ink: #0a5c40;
+  --card: #f7f7f7;
+  --alt: #f3f4f6;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin:0;
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* --------- Helpers --------- */
+.container{
+  width: min(1100px, 92%);
+  margin-inline: auto;
+}
+.narrow{ width: min(800px, 92%); }
+.grid-2{
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 1.1fr 1fr;
+}
+@media (max-width: 900px){
+  .grid-2{ grid-template-columns: 1fr; }
+}
+
+/* --------- Header / Nav --------- */
+.site-header{
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,.86);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid #e5e7eb;
+}
+.header-inner{
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 0;
+}
+.brand img {
+  height: 40px;
+  display: block;
+}
+.nav a{
+  color: var(--ink); text-decoration: none; font-weight: 600;
+  margin-left: 18px; padding: 8px 10px; border-radius: 9px;
+}
+.nav a:hover{ background: #eef2f7; }
+
+/* --------- Sections --------- */
+.section{ padding: 72px 0; }
+.section.alt{ background: var(--alt); }
+.section h2{
+  font-size: clamp(28px, 2.4vw + 12px, 40px);
+  line-height: 1.15; margin: 0 0 14px;
+}
+.section p{ color: var(--ink); margin: 0 0 14px; }
+.media-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.media-card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;   /* la imagen nunca se deforma */
+  object-position: center; /* siempre centrada */
+}
+
+/* --------- Hero --------- */
+.hero{ position: relative; }
+.hero img{ width: 100%; height: clamp(360px, 48vw, 540px); object-fit: cover; display: block; }
+.hero-caption{
+  position: absolute; inset: auto 0 8%; display: grid; place-items: center;
+}
+.hero h1{
+  width: min(1000px, 92%);
+  margin: 0 auto;
+  color: #fff; text-align: center;
+  font-size: clamp(26px, 2.8vw + 14px, 44px);
+  font-weight: 800; letter-spacing: .3px;
+  text-shadow: 0 8px 30px rgba(0,0,0,.35);
+  background: rgba(0,0,0,.35);
+  padding: 14px 18px; border-radius: 10px;
+}
+
+/* --------- Overlay section (Somos Ragasa) --------- */
+.section.overlay{
+  position: relative; padding: 0; color: #fff;
+}
+.section.overlay > picture img{
+  width: 100%; height: clamp(320px, 48vw, 520px); object-fit: cover; display: block;
+  filter: brightness(.55);
+}
+.overlay-content{
+  position: absolute; inset: 0;
+  display: grid; place-items: center; text-align: center; padding: 24px;
+}
+.pill-list{
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+  margin-top: 14px; padding: 0; list-style: none;
+}
+.pill-list li{
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.25);
+  padding: 8px 12px; border-radius: 999px; font-weight: 600;
+}
+
+/* --------- Productos --------- */
+.product-grid{
+  margin-top: 18px;
+  display: grid; gap: 18px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.product-grid figure{
+  margin: 0; background: var(--card); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow);
+}
+.product-grid img{ width: 100%; display: block; }
+.product-grid figcaption{
+  padding: 10px 12px; color: var(--muted); font-weight: 600;
+}
+@media (max-width: 800px){
+  .product-grid{ grid-template-columns: 1fr; }
+}
+
+/* --------- Footer --------- */
+.site-footer{
+  background: #111827; color: #e5e7eb;
+  padding: 34px 0; margin-top: 36px;
+}
+.disclaimer{
+  font-size: 14px; line-height: 1.7; color: #c6cbd3;
+  margin: 0 0 12px;
+}
+.copy{ margin: 0; color: #9aa1ab; font-size: 13px; }
+
+/* ===== Footer con banner de productos ===== */
+
+/* ya tienes .site-footer; lo usamos como contenedor general */
+.site-footer{
+  margin-top: 36px;
+  background: #111827;
+  color: #e5e7eb;
+  padding: 0;            /* quitamos padding; cada bloque controla el suyo */
+}
+
+/* Franja superior: imagen centrada y panorámica */
+.footer-banner{
+  background: #fff;                   /* fondo blanco como en la captura */
+  border-bottom: 1px solid #e6e8ec;
+  display: grid;
+  place-items: center;
+  padding: 18px 0;                    /* aire alrededor de la imagen */
+}
+.footer-banner img{
+  display: block;
+  max-width: min(1100px, 92%);        /* igual que .container */
+  width: 100%;
+  height: auto;
+  object-fit: contain;                /* no recorta, respeta proporción */
+  object-position: center;            /* centrada siempre */
+}
+
+/* Bloque gris con oficinas */
+.footer-contact{
+  background: #e9eaed;                /* gris claro como la referencia */
+  color: #1f2937;
+  padding: 28px 0 36px;
+}
+
+/* Grid de 3 columnas en desktop, 2 en tablet, 1 en móvil */
+.footer-grid{
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 1024px){
+  .footer-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .footer-grid{ grid-template-columns: 1fr; }
+}
+
+.office h4{
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #273043;
+}
+.office p{ margin: 2px 0; font-size: 14px; line-height: 1.5; }
+.office .label{
+  margin-top: 8px;
+  font-weight: 700;
+  color: #2b3344;
+}
+
+/* separador sutil arriba del bloque gris respecto al resto del sitio */
+.site-footer .footer-contact{
+  border-top: 1px solid #dfe3ea;
+}
+
+/* ====== Mega menú Productos (sin JS) ====== */
+.nav-products {
+  position: relative;
+  display: inline-block;
+}
+.nav-products > summary {
+  list-style: none;           /* quita el triangulito */
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 9px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.nav-products[open] > summary,
+.nav-products > summary:hover {
+  background: #eef2f7;
+}
+
+/* Panel */
+.menu-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+
+  /* centrado bajo el botón "Productos" */
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* ancho controlado */
+  width: min(900px, 95vw);
+
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.10);
+  z-index: 100;
+}
+
+/* Layout interno: dos columnas */
+.menu-inner {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Columna izquierda (categorías) */
+.menu-col:first-child {
+  background: #f7f7f7;
+  border-right: 1px solid #e5e7eb;
+}
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+}
+.menu-list li {
+  padding: 12px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.menu-list li:hover {
+  background: #eef2f7;
+  box-shadow: inset 3px 0 0 0 var(--brand-ink);
+}
+
+/* Columna derecha: grupos */
+.menu-group { padding: 12px 14px; }
+.menu-group + .menu-group { border-top: 1px dashed #e5e7eb; }
+.menu-group h5 {
+  margin: 4px 0 8px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #6b7280;
+}
+
+/* Responsivo */
+@media (max-width: 900px){
+  .menu-panel { width: 92vw; max-width: 92vw; left: 50%; transform: translateX(-50%); }
+  .menu-inner { grid-template-columns: 1fr; }
+  .menu-col:first-child { border-right: 0; border-bottom: 1px solid #e5e7eb; }
+}
+
+/* Cerrar el menú al tab-navegar fuera (accesibilidad) */
+.nav-products:focus-within summary { background: #eef2f7; }
+
+/* ===== Radios invisibles para controlar el panel ===== */
+.menu-inner > input[type="radio"]{
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Por defecto oculta todos los paneles de la derecha */
+.menu-col.right .panel{ display: none; }
+
+/* Mostrar el panel que corresponde al radio seleccionado */
+#cat-nutrioli:checked ~ .right #panel-nutrioli{ display: block; }
+#cat-sabrosano:checked ~ .right #panel-sabrosano{ display: block; }
+#cat-ave:checked       ~ .right #panel-ave{ display: block; }
+#cat-gran:checked      ~ .right #panel-gran{ display: block; }
+#cat-commodities:checked ~ .right #panel-commodities{ display: block; }
+#cat-refinados:checked ~ .right #panel-refinados{ display: block; }
+
+/* Estilo de la categoría activa en la columna izquierda */
+.menu-col.left label{
+  display: block;
+  padding: 12px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.menu-col.left label:hover{
+  background: #eef2f7;
+  box-shadow: inset 3px 0 0 0 var(--brand-ink);
+}
+
+/* Estado activo (según radio seleccionado) */
+#cat-nutrioli:checked ~ .left label[for="cat-nutrioli"],
+#cat-sabrosano:checked ~ .left label[for="cat-sabrosano"],
+#cat-ave:checked ~ .left label[for="cat-ave"],
+#cat-gran:checked ~ .left label[for="cat-gran"],
+#cat-commodities:checked ~ .left label[for="cat-commodities"],
+#cat-refinados:checked ~ .left label[for="cat-refinados"]{
+  background: #eef2f7;
+  box-shadow: inset 3px 0 0 0 var(--brand-ink);
+}
+
+/* Encabezado fino para grupos */
+.menu-col.right .panel h5{
+  margin: 4px 0 8px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #6b7280;
+}
+
+/* Ajustes responsive del mega menú (ya tenías algunos) */
+@media (max-width: 900px){
+  .menu-panel { width: 92vw; max-width: 92vw; left: 50%; transform: translateX(-50%); }
+  .menu-inner { grid-template-columns: 1fr; }
+  .menu-col.left { border-right: 0; border-bottom: 1px solid #e5e7eb; }
+}
+
+.product-boxes {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 24px;
+}
+
+.product-box {
+  background: linear-gradient(135deg, var(--brand), var(--brand-ink));
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+.product-box:hover {
+  transform: translateY(-6px);
+  background: linear-gradient(135deg, var(--brand-ink), var(--brand));
+}
